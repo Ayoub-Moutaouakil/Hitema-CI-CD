@@ -23,9 +23,6 @@ jobs:
         username: ymtkudasai
         # Password or personal access token used to log against the Docker registry
         password: ${{secrets.DOCKERHUB_PASSWORD}}
-        
-    - name: PWD
-      run: pwd
       
     - uses: actions/checkout@v3
     - name: LS
