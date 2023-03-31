@@ -22,6 +22,12 @@ jobs:
         username: ymtkudasai
         # Password or personal access token used to log against the Docker registry
         password: ${{secrets.DOCKERHUB_PASSWORD}}
+        
+    - name: PWD
+      run: pwd
+      
+    - name: LS
+      run: ls
       
     - name: Build and push Docker images
       # You may pin to the exact commit or the version.
