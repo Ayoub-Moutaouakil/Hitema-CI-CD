@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+    db:
+        image: mysql:latest
+        ports:
+          - 3306:3306
+        environment:
+            MYSQL_DATABASE: miniapp
+            MYSQL_ROOT_PASSWORD: root
+
+    app:
+        image: php:7.3-apache
+        ports: 
+            - "80:80"
+        build: ./app
+        depends_on:
+            - db
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - 8000:80
+        environment:
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+            MYSQL_ROOT_PASSWORD: root
+        links:
+            - db:db
+
