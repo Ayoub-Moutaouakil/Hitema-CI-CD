@@ -10,10 +10,10 @@ services:
             MYSQL_ROOT_PASSWORD: root
 
     app:
-        image: php:7.3-apache
+        build: ./app
+        image: ymtkudasai/hitema-ci-cd:latest
         ports: 
             - "80:80"
-        build: ./app
         depends_on:
             - db
 
