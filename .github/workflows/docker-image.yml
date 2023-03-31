@@ -12,10 +12,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
+    steps: 
+    - name: Login to Docker Registry
+      run: docker login -u ymtkudasai -p ${{ secrets.DOCKERHUB_PASSWORD }}
+      
+    - name: Compose
       run: docker compose build
       
-    - name: Push the image
+    - name: Push
       run: docker compose push
+    
