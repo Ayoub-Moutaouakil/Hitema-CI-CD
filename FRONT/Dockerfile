@@ -1,8 +1,6 @@
-FROM node:18-alpine
+FROM node:18-alpine as build
 
 WORKDIR /react-vite-app
-
-EXPOSE 5173
 
 COPY package.json package-lock.json ./
 
@@ -10,4 +8,14 @@ RUN npm install --silent
 
 COPY . ./
 
-CMD ["npm", "run", "dev"]
+RUN npm run build
+
+##############################################################
+
+FROM nginx:latest
+
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+WORKDIR /usr/share/nginx/html
+
+COPY --from=build /react-vite-app/dist/ .
