@@ -1,3 +1,5 @@
+[![Full Stack Web CI/CD](https://github.com/Ayoub-Moutaouakil/Hitema-CI-CD/actions/workflows/cicd.yml/badge.svg?branch=main)](https://github.com/Ayoub-Moutaouakil/Hitema-CI-CD/actions/workflows/cicd.yml)
+
 Etapes à réaliser pour executer le projet sur son poste local :
 
 1- Téléchargez ce répértoire git sur votre PC.
