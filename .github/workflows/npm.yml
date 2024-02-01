@@ -32,6 +32,12 @@ jobs:
         cache-dependency-path: 'FRONT/package-lock.json'
     - run: npm ci
     - run: npm run build --if-present
+    - name: Archive front production artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist
+        path: |
+          FRONT/dist
 
   backend:
 
@@ -54,3 +60,9 @@ jobs:
         cache: 'npm'
         cache-dependency-path: 'BACK/package-lock.json'
     - run: npm ci
+    - name: Archive back packages
+      uses: actions/upload-artifact@v4
+      with:
+        name: node_modules
+        path: |
+          BACK/node_modules
