@@ -10,9 +10,12 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  frontend:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./FRONT
 
     strategy:
       matrix:
@@ -21,12 +24,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: cd ./FRONT
-    - run: pwd
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        working-directory: ./FRONT
     - run: npm ci
     - run: npm run dev
