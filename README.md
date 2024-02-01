@@ -59,4 +59,9 @@ Le projet a été buildé sans erreur :
 
 ![Build](/build.png "Build")
 
+Test du github workflow à l'aide de l'outil act
+
+![Act](/act.png "Act")
+
+
 DIAGRAMME SUR microservices.drawio-1.png
