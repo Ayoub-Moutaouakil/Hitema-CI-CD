@@ -78,7 +78,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Download front production build
+      uses: actions/download-artifact@v4
+      with:
+        name: dist
     - run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ymtkudasai/hitema-ci-cd-front:latest
+    - name: Push the image
+      run: docker push ymtkudasai/hitema-ci-cd-front:latest
 
   docker-back:
   
@@ -90,4 +98,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Download back node_modules
+      uses: actions/download-artifact@v4
+      with:
+        name: node_modules
     - run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ymtkudasai/hitema-ci-cd-back:latest
+    - name: Push the image
+      run: docker push ymtkudasai/hitema-ci-cd-back:latest
+
